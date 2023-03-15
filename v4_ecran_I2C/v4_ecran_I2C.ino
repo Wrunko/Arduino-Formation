@@ -28,21 +28,15 @@ byte Omega[8] = {
   B10001,
   B01010,
   B11011,
-  B00000,
 };
-
 
 void setup() {
 
-  lcd.createChar(0, Omega);
-
   Serial.begin(9600);
-  pinMode(PIN_MESURE_TENSION, INPUT);
-  /** set up the LCD's number of columns and rows: */
-
 
   lcd.init();
-  lcd.backlight();                      
+  lcd.createChar(1, Omega);
+  lcd.backlight();   
 }
 
 void loop() {
@@ -50,6 +44,9 @@ void loop() {
   uint16_t mesureAnalogique = analogRead(PIN_MESURE_TENSION);
 
   /* Affichage HUD et tension */
+  lcd.setCursor(0, 0);
+  lcd.write((byte)1);
+  delay(2000);
   lcd.setCursor(0, 1);
   lcd.print(calculVin(mesureAnalogique));
   lcd.print(" V");

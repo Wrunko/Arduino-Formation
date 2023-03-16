@@ -44,21 +44,27 @@ void interfaceVoltmetre(){
 
 void interfaceAccueil(){
   
+
   tft.fillScreen(ST77XX_BLUE);
   tft.setCursor(tft.width()/2-tft.width()/8, tft.height()/4);
-  tft.setTextColor(ST77XX_GREEN);
+  tft.setTextColor(ST77XX_BLACK);
+  tft.setTextSize(2);
   tft.print("ORSYS");
-  
-  delay(500);
+  tft.drawPixel(0, 0, ST77XX_WHITE);
+
+  delay(2000);
+  tft.fillScreen(ST77XX_BLACK);
+
+
 }
 
 void setup() {
 
   Serial.begin(9600);
   pinMode(PIN_MESURE_TENSION, INPUT);
-
-  Serial.print(F("Hello! ST77xx TFT Test"));
   tft.initR(INITR_BLACKTAB); 
+
+  interfaceAccueil();
    
 }
 
@@ -72,6 +78,6 @@ void loop() {
   interfaceVoltmetre();
   
   delay(800);
-  tft.fillScreen(ST77XX_DARK);
+  tft.fillScreen(ST77XX_BLACK);
   
 }

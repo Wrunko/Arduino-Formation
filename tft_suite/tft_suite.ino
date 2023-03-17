@@ -5,10 +5,6 @@
 
 struct SensorsValues sensorsValues;
 
-
-
-
-
 /*void writeTime(tmElements_t tm){
 
   makeBandeau();
@@ -37,8 +33,12 @@ void setup() {
   #ifdef OUTPUT_ACTIONNER
     setupOutput();
   #endif
-  
-  setupPressureUnit();
+  #ifdef PRESSURE_SENSOR
+    setupPressureUnit();
+  #endif
+  #ifdef TEMPERATURE_SENSOR
+    setupTemperature();
+  #endif
   delay(4000);
 
 }
